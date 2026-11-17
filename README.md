@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Willowmere Township
 
-## Getting Started
+A demo community website for a fictional township, built by MyClickAid for its portfolio gallery.
 
-First, run the development server:
+Live demo: https://willowmere-demo.derin-obasa.workers.dev/
 
-```bash
+A fictional community. Willowmere Township, its news, projects, businesses, prices and donations are made up for this demo. Nothing here is a real government service, and no forms send data or take payment.
+
+What it shows
+Video hero: a carousel of short, muted township clips with a pause button. It skips any clip that fails to load and falls back to a still photo.
+"I'd like to…" menu: a task-based menu (report a problem, book the hall, support a project) instead of department names.
+Site-wide tools: a dismissible alert banner, a site search across news, projects, the directory and places, a utility bar with hours and phone, and a skip-to-content link.
+Home page: status chips, an icon quick-link grid, community news, upcoming events with reminders, a bulletin board, projects under way, places to visit and animated counters.
+News: filter by category (notices, council, public works, events).
+Projects: current, upcoming and proposed projects with animated progress bars and a "Support this" button.
+Directory: searchable local businesses with category filters.
+Community map: an illustrated map with pins and a place list.
+Give: donation funds with progress bars and a demo donation form.
+Contact: a department request form with a demo confirmation.
+Built with
+Next.js (App Router, JavaScript, static export)
+Tailwind CSS v4
+Fonts: Young Serif and Work Sans, self-hosted with @fontsource
+Hosted on Cloudflare
+Getting started
+bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+To create the production build (a static site in the out folder):
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+bash
+npm run build
+Project structure
+app/
+\_components/ Header, Footer, HeroCarousel, SearchDialog, NewsList, ProjectsList, ...
+\_libs/ site.js, data.js, pictures.js, helpers.js
+\_styles/ globals.css
+news/ projects/ directory/ map/ give/ contact/
+public/ Photos (.webp) and hero clips (.mp4)
+Photos and hero clips
 
-## Learn More
+Everything is optional. A photo slot shows a green placeholder until you add an image, and the hero shows a still photo if no clips are listed. Put the files in public/ and register them in app/\_libs/pictures.js.
 
-To learn more about Next.js, take a look at the following resources:
+Slot File Ratio
+Hero still and video poster wm-hero.webp 16:9
+News photos wm-news-1.webp to wm-news-3.webp 4:3
+Place photos wm-place-park.webp, wm-place-library.webp, wm-place-trail.webp 4:3
+Hero clips wm-clip-1.mp4 to wm-clip-4.mp4 16:9
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Keep each clip muted, around 720p and under about 3 MB so the page stays fast.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Deployment
 
-## Deploy on Vercel
+The site is a static export (output: "export" in next.config.mjs) and deploys to Cloudflare from this repository. Every push to the main branch rebuilds and redeploys it.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+About MyClickAid
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MyClickAid is a bespoke web design studio. This site is one of several demo projects that show what a custom-designed website can look like for different kinds of organizations.
